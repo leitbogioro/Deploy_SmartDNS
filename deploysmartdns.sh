@@ -95,17 +95,17 @@ inst_smartdns(){
 	replace_config_file
 	${start_smartdns}
 	echo "Upgrade finished!"
-	else
-	    download_smartdns
-		cd ${smartdns_file}
-	    chmod +x ./install
+    else
+	download_smartdns
+        cd ${smartdns_file}
+	chmod +x ./install
         ./install -i		
-		apply_smartdns_service
-		${stop_smartdns}
-		replace_config_file
-		echo "SmartDNS has been installed!"
-		cd /root
-	fi
+	apply_smartdns_service
+	${stop_smartdns}
+	replace_config_file
+	echo "SmartDNS has been installed!"
+	cd /root
+    fi
 }
 
 clean_smartdns_file(){

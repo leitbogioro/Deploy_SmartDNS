@@ -15,4 +15,4 @@
 # Install
 <p>Currently, the script is only support Debian/Ubuntu, doesn't support neither Windows/CentOS/MacOS etc... You can execute the following:</p>
 <br />
-<pre><code>wget --no-check-certificate -O deploysmartdns.sh https://git.io/fjLxL && bash deploysmartdns.sh</code></pre>
+<pre><code>wget --no-check-certificate -O deploysmartdns.sh https://git.io/fjLxz && bash deploysmartdns.sh</code></pre>

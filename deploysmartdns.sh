@@ -26,10 +26,10 @@ if [ -f /etc/redhat-release ] && [ `cat /etc/redhat-release > /dev/null 2>&1 | g
     OS='CentOS'
     elif [ ! -z "`cat /etc/issue | grep bian`" ]; then
         OS='Debian'
-		cd /root
+	cd /root
     elif [ ! -z "`cat /etc/issue | grep Ubuntu`" ]; then
         OS='Ubuntu'
-		cd /root
+	cd /root
     else
         echo "Your OS is not supported, please install it on Ubuntu/Debian/CentOS"
         exit 1
@@ -37,7 +37,7 @@ fi
 
 if [[ ${OS} == 'Debian' ]] || [[ ${OS} == 'Ubuntu' ]]; then
     apt-get update
-	apt-get install wget -y
+    apt-get install wget -y
 fi
 
 get_latest_libssl1_0_0_ver(){
@@ -70,7 +70,7 @@ download_smartdns(){
 
 apply_smartdns_service(){
     /lib/systemd/systemd-sysv-install enable smartdns
-	${start_smartdns}
+    ${start_smartdns}
 }
 
 replace_config_file(){

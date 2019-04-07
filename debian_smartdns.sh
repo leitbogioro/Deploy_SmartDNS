@@ -9,9 +9,7 @@ fi
 if ! grep -Eqi "127.0.0.1" /etc/resolv.conf; then
     rm -rf /etc/resolv.conf
     cat > /etc/resolv.conf<<-EOF
-{
-    nameserver 127.0.0.1
-    nameserver 9.9.9.9
-}
+nameserver 127.0.0.1
+nameserver 8.8.8.8
 EOF
 fi

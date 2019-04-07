@@ -84,11 +84,11 @@ replace_config_file(){
 
 inst_smartdns(){
     inst_deb_Libssl_1_0_0
-	if [[ -f /usr/sbin/smartdns ]]; then
-	    echo "You had installed SmartDNS, upgrading..."
-	    ${stop_smartdns}
-	    rm -rf /usr/sbin/smartdns
-		download_smartdns
+    if [[ -f /usr/sbin/smartdns ]]; then
+	echo "You had installed SmartDNS, upgrading..."
+	${stop_smartdns}
+	rm -rf /usr/sbin/smartdns
+        download_smartdns
 		cd ${smartdns_file}/src
 		mv smartdns /usr/sbin/smartdns
 		cd /root
@@ -111,8 +111,8 @@ inst_smartdns(){
 clean_smartdns_file(){
     echo "Cleaning redundant files..."
     rm -rf ${libssl1_0_0_deb}
-	rm -rf ${smartdns_file}.tar.gz
-	rm -rf ${smartdns_file}
+    rm -rf ${smartdns_file}.tar.gz
+    rm -rf ${smartdns_file}
 }
 
 inst_smartdns

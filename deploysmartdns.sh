@@ -37,7 +37,7 @@ fi
 
 if [[ ${OS} == 'Debian' ]] || [[ ${OS} == 'Ubuntu' ]]; then
     apt-get update
-    apt-get install wget -y
+    apt-get install wget cron -y
 fi
 
 get_latest_libssl1_0_0_ver(){
@@ -108,6 +108,17 @@ inst_smartdns(){
     fi
 }
 
+execute_smartdns_work() {
+    if ! grep '/etc/smartdns/debian_smartdns.sh' /etc/crontab; then
+        wget --no-check-certificate https://raw.githubusercontent.com/leitbogioro/Deploy_SmartDNS/master/debian_smartdns.sh
+	mv debian_smartdns.sh /etc/smartdns/debian_smartdns.sh
+        /lib/systemd/systemd-sysv-install enable cron
+        systemctl start cron.service
+        echo "1  */3    * * *   root    bash /etc/smartdns/debian_smartdns.sh" >> /etc/crontab
+        /etc/init.d/cron restart
+    fi
+}
+
 clean_smartdns_file(){
     echo "Cleaning redundant files..."
     rm -rf ${libssl1_0_0_deb}
@@ -116,4 +127,5 @@ clean_smartdns_file(){
 }
 
 inst_smartdns
+execute_smartdns_work
 clean_smartdns_file

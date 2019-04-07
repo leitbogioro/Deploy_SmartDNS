@@ -89,12 +89,12 @@ inst_smartdns(){
 	${stop_smartdns}
 	rm -rf /usr/sbin/smartdns
         download_smartdns
-		cd ${smartdns_file}/src
-		mv smartdns /usr/sbin/smartdns
-		cd /root
-		replace_config_file
-		${start_smartdns}
-		echo "Upgrade finished!"
+	cd ${smartdns_file}/src
+	mv smartdns /usr/sbin/smartdns
+	cd /root
+	replace_config_file
+	${start_smartdns}
+	echo "Upgrade finished!"
 	else
 	    download_smartdns
 		cd ${smartdns_file}

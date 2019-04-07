@@ -41,31 +41,31 @@ if [[ ${OS} == 'Debian' ]] || [[ ${OS} == 'Ubuntu' ]]; then
 fi
 
 get_latest_libssl1_0_0_ver(){
-	wget -O ${cert_file} ${libssl_url}${sort}   
+    wget -O ${cert_file} ${libssl_url}${sort}   
     get_libssl_ver=`awk '{print $6}' ${cert_file} | grep 'amd64' | grep 'libssl1.0.0' | sed -n '1p' | sed -r 's/.*href=\"(.*)\">libssl.*/\1/'`
     rm -rf ${cert_file}
 }
 
 get_latest_smartdns(){
     wget -O ${cert_file} ${smartdns_url}
-	get_smartdns_ver=`awk '$2 ~ /x86_64.tar.gz/ {print $2}' index | sed -n '1p' | sed -r 's/.*href=\"(.*)\".*/\1/'`
-	rm -rf ${cert_file}
+    get_smartdns_ver=`awk '$2 ~ /x86_64.tar.gz/ {print $2}' index | sed -n '1p' | sed -r 's/.*href=\"(.*)\".*/\1/'`
+    rm -rf ${cert_file}
 }
 
 inst_deb_Libssl_1_0_0(){
     if [[ -f "`dpkg -l | grep 'libssl1.0.0'`" ]]; then
-	    echo "You had installed libssl1.0.0!"
-	else
+        echo "You had installed libssl1.0.0!"
+    else
         get_latest_libssl1_0_0_ver
-	    wget -O ${libssl1_0_0_deb} ${libssl_url}${get_libssl_ver}
-	    dpkg --install ${libssl1_0_0_deb}
-	fi
+	wget -O ${libssl1_0_0_deb} ${libssl_url}${get_libssl_ver}
+	dpkg --install ${libssl1_0_0_deb}
+    fi
 }
 
 download_smartdns(){
     get_latest_smartdns
-	wget --no-check-certificate -O ${smartdns_file}.tar.gz ${github}${get_smartdns_ver}
-	tar zxf ${smartdns_file}.tar.gz
+    wget --no-check-certificate -O ${smartdns_file}.tar.gz ${github}${get_smartdns_ver}
+    tar zxf ${smartdns_file}.tar.gz
 }
 
 apply_smartdns_service(){

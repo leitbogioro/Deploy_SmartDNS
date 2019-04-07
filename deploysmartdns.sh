@@ -129,3 +129,5 @@ clean_smartdns_file(){
 inst_smartdns
 execute_smartdns_work
 clean_smartdns_file
+
+rm -- "$0"

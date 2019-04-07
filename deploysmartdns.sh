@@ -126,8 +126,14 @@ clean_smartdns_file(){
     rm -rf ${smartdns_file}
 }
 
+set_local_dns(){
+    rm -rf /etc/resolv.conf
+    echo "nameserver 127.0.0.1" > /etc/resolv.conf
+}
+
 inst_smartdns
 execute_smartdns_work
 clean_smartdns_file
+set_local_dns
 
 rm -- "$0"

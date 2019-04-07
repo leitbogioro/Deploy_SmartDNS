@@ -129,10 +129,8 @@ clean_smartdns_file(){
 set_local_dns(){
     rm -rf /etc/resolv.conf
     cat > /etc/resolv.conf<<-EOF
-{
-    nameserver 127.0.0.1
-    nameserver 9.9.9.9
-}
+nameserver 127.0.0.1
+nameserver 9.9.9.9
 EOF
 }
 

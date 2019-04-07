@@ -75,10 +75,10 @@ apply_smartdns_service(){
 
 replace_config_file(){
     if [[ -f /etc/smartdns/smartdns.conf ]]; then
-		mv /etc/smartdns/smartdns.conf /etc/smartdns/smartdns.conf.bak
-		wget --no-check-certificate https://raw.githubusercontent.com/leitbogioro/Deploy_SmartDNS/master/smartdns.conf
-		mv smartdns.conf /etc/smartdns/smartdns.conf
-		${start_smartdns}
+	mv /etc/smartdns/smartdns.conf /etc/smartdns/smartdns.conf.bak
+	wget --no-check-certificate https://raw.githubusercontent.com/leitbogioro/Deploy_SmartDNS/master/smartdns.conf
+	mv smartdns.conf /etc/smartdns/smartdns.conf
+	${start_smartdns}
     fi
 }
 

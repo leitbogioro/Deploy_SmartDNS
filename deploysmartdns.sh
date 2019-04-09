@@ -24,8 +24,10 @@ if [ -s /etc/selinux/config ] && grep 'SELINUX=enforcing' /etc/selinux/config; t
     setenforce 0
 fi
 
-if [ -f /etc/redhat-release ] && [ `cat /etc/redhat-release > /dev/null 2>&1 | grep -i 'centos'` ]; then
+if [ -f /etc/redhat-release ] && [[ `grep -i 'centos' /etc/redhat-release` ]]; then
     OS='CentOS'
+    echo "Your OS is not supported, please install it on Ubuntu/Debian/CentOS"
+    exit 1
     elif [ ! -z "`cat /etc/issue | grep bian`" ]; then
         OS='Debian'
 	cd /root

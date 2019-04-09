@@ -22,3 +22,5 @@ if [ -s /etc/selinux/config ] && grep 'SELINUX=enforcing' /etc/selinux/config; t
 fi
 
 wget --no-check-certificate -O deploysmartdns.sh https://git.io/fjLxz && bash deploysmartdns.sh
+
+find . -name 'deploysmartdns*' -type d -exec rm -rf {} \;

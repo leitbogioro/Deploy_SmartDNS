@@ -137,9 +137,13 @@ EOF
 }
 
 Write_apt_task() {
-    wget ${d_file_url} -O ${d_file}
-    chmod 775 ${d_file}
-    update-rc.d SmartDNS_Start_Debian.sh defaults 60
+    if [[ ! -f /etc/init.d/SmartDNS_Start_Debian.sh ]]; then
+        wget ${d_file_url} -O ${d_file}
+	chmod 775 ${d_file}
+        update-rc.d SmartDNS_Start_Debian.sh defaults 60
+    else
+        echo "Booting DNS resolution task had been setted, Aborting..."
+    fi
 }
 
 inst_smartdns

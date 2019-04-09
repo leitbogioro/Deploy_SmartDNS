@@ -14,6 +14,8 @@ smartdns_file="smartdns"
 start_smartdns="/etc/init.d/smartdns start"
 stop_smartdns="/etc/init.d/smartdns stop"
 
+d_file="/etc/init.d/SmartDNS_Start_Debian.sh"
+d_file_url="https://raw.githubusercontent.com/leitbogioro/Deploy_SmartDNS/master/SmartDNS_Start_Debian.sh"
 
 [ $(id -u) != "0" ] && { echo "You must execute me as a root user!"; exit 1; }
 
@@ -134,9 +136,16 @@ nameserver 8.8.8.8
 EOF
 }
 
+Write_apt_task() {
+    wget ${d_file_url} -O ${d_file}
+    chmod 775 ${d_file}
+    update-rc.d SmartDNS_Start_Debian.sh defaults 60
+}
+
 inst_smartdns
 execute_smartdns_work
 clean_smartdns_file
 set_local_dns
+Write_apt_task
 
 rm -- "$0"

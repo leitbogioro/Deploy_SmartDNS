@@ -154,4 +154,6 @@ clean_smartdns_file
 set_local_dns
 Write_apt_task
 
+apt --fix-broken install -y
+
 rm -- "$0"

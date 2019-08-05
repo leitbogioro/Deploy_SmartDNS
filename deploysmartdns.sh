@@ -128,6 +128,7 @@ clean_smartdns_file(){
     rm -rf ${libssl1_0_0_deb}
     rm -rf ${smartdns_file}.tar.gz
     rm -rf ${smartdns_file}
+    apt --fix-broken install -y
 }
 
 set_local_dns(){
